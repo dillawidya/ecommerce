@@ -8,6 +8,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ItemController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductController;
@@ -69,6 +70,8 @@ Route::group(['prefix' => 'account'], function(){
 
     Route::group(['middleware' => 'auth'], function(){
         Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::post('/update-address', [AuthController::class, 'updateAddress'])->name('account.updateAddress');
         Route::get('/my-orders', [AuthController::class, 'orders'])->name('account.orders');
         Route::get('/my-wishlist', [AuthController::class, 'wishlist'])->name('account.wishlist');
         Route::post('/remove-product-from-wishlist', [AuthController::class, 'removeProductFromWishlist'])->name('account.removeProductFromWishlist');
@@ -176,6 +179,15 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/orders/{id}',[OrderController::class, 'detail'])->name('orders.detail');
         Route::post('/order/change-status/{id}',[OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
         Route::post('/order/send-email/{id}',[OrderController::class, 'sendInvoiceEmail'])->name('orders.sendInvoiceEmail');
+
+
+        //User Routes
+        Route::get('/users',[UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create',[UserController::class, 'create'])->name('users.create');
+        Route::post('/users',[UserController::class, 'store'])->name('users.store');
+        Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}',[UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}',[UserController::class, 'destroy'])->name('users.delete');
 
 
 
