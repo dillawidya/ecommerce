@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\City;
+use App\Models\Page;
 use App\Models\Order;
 use App\Models\Product;
 use App\Mail\OrderEmail;
@@ -41,6 +42,11 @@ function orderEmail($orderId,$userType="customer") {
 
 function getCityInfo($id) {
     return City::where('id',$id)->first();
+}
+
+function staticPages() {
+    $pages = Page::orderBy('name','ASC')->get();
+    return $pages;
 }
 
 ?>

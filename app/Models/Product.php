@@ -16,4 +16,8 @@ class Product extends Model
     public function transaksi() {
         return $this->belongsTo(Transaksi::class);
     }
+
+    public function product_ratings() {
+        return $this->hasMany(ProductRating::class)->where('status',1);
+    }
 }

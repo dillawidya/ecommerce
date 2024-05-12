@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\TempImage;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\ProductRating;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +25,7 @@ class ProductController extends Controller
         //                 ->leftJoin('transaksis', 'transaksis.id', '=', 'products.transaksi_id');
         
         if (!empty($request->get('keyword'))) {
-            $products = $products->where('nama_resep','like','%'.$request->get('keyword').'%');
+            $products = $products->where('titleName','like','%'.$request->get('keyword').'%');
         }
 
         $products = $products->paginate(10);
@@ -257,6 +258,35 @@ class ProductController extends Controller
 
         return response()->json([
             'tags' => $tempProduct,
+            'status' => true
+        ]);
+    }
+
+    public function productRatings(Request $request) {
+        $ratings = ProductRating::select('product_ratings.*', 'transaksis.nama_resep as titleName')
+        ->orderBy('product_ratings.created_at','DESC')->with('product.transaksi');
+        $ratings = $ratings->leftJoin('products','products.id','product_ratings.product_id');
+        $ratings = $ratings->leftJoin('transaksis', 'products.transaksi_id', '=', 'transaksis.id');
+
+        
+        if ($request->get('keyword') != "") {
+            $ratings = $ratings->orWhere('nama_resep','like','%'.$request->keyword.'%');
+            $ratings = $ratings->orWhere('product_ratings.username','like','%'.$request->keyword.'%');
+        }
+        $ratings = $ratings->paginate(10);
+        return view('admin.products.ratings',[
+            'ratings' => $ratings
+        ]);
+    }
+
+    public function changeRatingStatus(Request $request) {
+        $productRating = productRating::find($request->id);
+        $productRating->status = $request->status;
+        $productRating->save();
+
+        session()->flash('success','Status Changed Successfully');
+
+        return response()->json([
             'status' => true
         ]);
     }
