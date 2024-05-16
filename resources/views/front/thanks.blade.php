@@ -1,6 +1,19 @@
 @extends('front.layouts.app')
 
 @section('content')
+<section class="section-5 pt-3 pb-3 mb-3 bg-white">
+    <div class="container">
+        <div class="light-font">
+            <ol class="breadcrumb primary-color mb-0">
+                {{-- <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.shop') }}">Shop</a></li>
+                <li class="breadcrumb-item">Checkout</li> --}}
+                <li class="breadcrumb-item" style="color: #ffa500;"><i class="fas fa-home" style="margin-right: 5px"></i>Thanks</li>
+
+            </ol>
+        </div>
+    </div>
+</section>
     <section class="container">
         <div class="col-md-12 text-center py-5">
 

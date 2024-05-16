@@ -9,7 +9,7 @@
                 <h1>Discount Coupons</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('coupons.create') }}" class="btn btn-primary">New Discount Coupon</a>
+                <a href="{{ route('coupons.create') }}" class="btn" style="background: #dbb143; color: white">New Discount Coupon</a>
             </div>
         </div>
     </div>

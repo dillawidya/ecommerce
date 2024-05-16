@@ -5,8 +5,10 @@
     <div class="container">
         <div class="light-font">
             <ol class="breadcrumb primary-color mb-0">
-                <li class="breadcrumb-item"><a class="white-text" href="#">My Account</a></li>
-                <li class="breadcrumb-item">My Wishlist</li>
+                {{-- <li class="breadcrumb-item"><a class="white-text" href="#">My Account</a></li>
+                <li class="breadcrumb-item">My Wishlist</li> --}}
+                <li class="breadcrumb-item" style="color: #dbb143;"><i class="fas fa-home" style="margin-right: 5px"></i>My Wishlist</li>
+
             </ol>
         </div>
     </div>

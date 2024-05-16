@@ -7,7 +7,7 @@
                 <h1>Purchases List</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('transaksi.create') }}" class="btn btn-primary">New Purchase</a>
+                <a href="{{ route('transaksi.create') }}" class="btn" style="background: #dbb143; color: white">New Purchase</a>
             </div>
         </div>
     </div>
@@ -39,11 +39,11 @@
                                     <td>{{ \Carbon\Carbon::parse($transaksi->created_at)->format('d M, Y') }}</td>
                                     <td>{{$transaksi->nama_resep}}</td>
                                     <td>
-                                        <ol>
+                                        
                                             @foreach ($transaksi->items as $item)   
                                                 <li>{{$item->nama}}</li>
                                             @endforeach
-                                        </ol>
+                                        
                                     </td>
                                     <td>Rp. {{number_format($transaksi->total_harga)}}</td>
                                     <td>

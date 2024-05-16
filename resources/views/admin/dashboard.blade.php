@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-6">							
-                <div class="small-box card">
+                <div class="small-box card" style="background-color: #1ACDC5">
                     <div class="inner">
                         <h3>{{ $totalOrders }}</h3>
                         <p>Total Orders</p>
@@ -29,12 +29,14 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="{{ route('orders.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="small-box card" style="border-radius: 0px">
+                        <a href="{{ route('orders.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-4 col-6">							
-                <div class="small-box card">
+                <div class="small-box card" style="background-color: #EEE30C">
                     <div class="inner">
                         <h3>{{ $totalProducts }}</h3>
                         <p>Total Product</p>
@@ -42,12 +44,14 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{{ route('products.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="small-box card" style="border-radius: 0px">
+                        <a href="{{ route('products.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
             </div>
             
             <div class="col-lg-4 col-6">							
-                <div class="small-box card">
+                <div class="small-box card" style="background-color: #F36915">
                     <div class="inner">
                         <h3>{{ $totalCustomers }}</h3>
                         <p>Total Customers</p>
@@ -55,12 +59,14 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{{ route('users.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="small-box card" style="border-radius: 0px">
+                        <a href="{{ route('users.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
             </div>
             
             <div class="col-lg-4 col-6">							
-                <div class="small-box card">
+                <div class="small-box card" style="background-color: #33F315">
                     <div class="inner">
                         <h3>Rp. {{ number_format($totalRevenue) }}</h3>
                         <p>Total Sale</p>
@@ -68,7 +74,9 @@
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="javascript:void(0);" class="small-box-footer">&nbsp;</a>
+                    <div class="small-box card" style="border-radius: 0px">
+                        <a href="javascript:void(0);" class="small-box-footer">&nbsp;</a>
+                    </div>
                 </div>
             </div>
 

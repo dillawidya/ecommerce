@@ -9,7 +9,7 @@
                 <h1>Edit Category</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('categories.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('categories.index') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                             </div>
                             @if(!empty($category->image))
                             <div>
-                                <img width="250" src="{{ asset('uploads/category/'.$category->image) }}" alt="">
+                                <img width="250" src="{{ asset('uploads/category/'.$category->image) }}" class="mt-3">
                             </div>
                             @endif
                         </div>
@@ -75,7 +75,7 @@
                 </div>							
             </div>
             <div class="pb-5 pt-3">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn" style="background: #dbb143; color: white">Update</button>
                 <a href="{{ route('categories.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
             </div>
         </form>

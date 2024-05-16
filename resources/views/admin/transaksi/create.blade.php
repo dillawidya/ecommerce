@@ -7,7 +7,7 @@
                 <h1>Purchase</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('transaksi.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('transaksi.index') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <div class="col-md-6 col-12">
                             <div class="form-gorup">
                                 <label for="">&nbsp;</label>
-                                <button type="button" class="btn btn-primary d-block" onclick="tambahItem()">Add</button>
+                                <button type="button" class="btn btn-success d-block" onclick="tambahItem()">Add</button>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <input type="hidden" name="total_harga" value="0">
-                            <button class="btn btn-success">Save</button>
+                            <button class="btn" style="background: #dbb143; color: white">Create</button>
                         </div>
                     </div>
                 </form> 

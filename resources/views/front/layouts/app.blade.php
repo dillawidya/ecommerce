@@ -50,22 +50,18 @@
 
 <div class="bg-light top-header">        
 	<div class="container">
-		<div class="row align-items-center d-none d-lg-flex justify-content-between">
+		<div class="row align-items-center d-none d-lg-flex justify-content-between ">
 			<div class="col-md-2 logo">
 				<nav class="navbar navbar-light bg-light">
                     <div class="container">
-                      	<a class="navbar-brand" href="{{ route("front.home") }}">
-							<img src="{{ asset('front-assets/images/L_cooks-removebg-preview.png') }}" alt="" width="50" height="24">
+                      	<a class="navbar-brand" href="{{ route("front.home") }}" style="width: 70px">
+							<img src="{{ asset('front-assets/images/logo.png') }}" alt="">
 						</a>
                     </div>
                   </nav>
 			</div>
 			<div class="col-lg-6 col-6 text-left  d-flex justify-content-end align-items-center">
-				@if (Auth::check())
-				<a href="{{ route('account.profile') }}" class="nav-link text-dark">My Account</a>
-				@else
-				<a href="{{ route('account.login') }}" class="nav-link text-dark">Login/Register</a>
-				@endif
+
 				<form action="{{ route('front.shop') }}">					
 					<div class="input-group">
 						<input value="{{ Request::get('search') }}" type="text" placeholder="Search For Products" class="form-control" name="search" id="search">
@@ -92,10 +88,22 @@
     		</button>
     		<div class="collapse navbar-collapse" id="navbarSupportedContent">
       			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        			<!-- <li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="index.php" title="Products">Home</a>
-        			</li> -->
-                    @if(getCategories()->isNotEmpty())
+        			<li class="nav-item">
+          				<a href="{{ route('front.home') }}" class="nav-link active" aria-current="page" href="index.php" title="Products">Home</a>
+        			</li>
+					<li class="nav-item">
+						<a href="{{ route('front.shop') }}" class="nav-link active " aria-current="page" href="index.php" title="Products">Shop</a>
+				  	</li>
+					@if (Auth::check())
+					<li class="nav-item">
+					<a href="{{ route('account.profile') }}" class="nav-link active">My Account</a>
+					</li>
+					@else
+					<li class="nav-item">
+					<a href="{{ route('account.login') }}" class="nav-link active">Login/Register</a>
+					</li>
+					@endif
+                    {{-- @if(getCategories()->isNotEmpty())
                     @foreach (getCategories() as $category)
                     <li class="nav-item">
 						<button class="btn btn-dark" aria-expanded="false">
@@ -103,7 +111,7 @@
 						</button>
 					</li>
                     @endforeach
-                    @endif
+                    @endif --}}
 					{{-- <li class="nav-item dropdown">
 						<button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Men's Fashion
@@ -149,7 +157,7 @@
       		</div>   
 			<div class="right-nav py-0">
 				<a href="{{ route("front.cart") }}" class="ml-3 d-flex pt-2">
-					<i class="fas fa-shopping-cart text-shop"></i>					
+					<i class="fas fa-shopping-cart text-shop" style="color: white;"></i>					
 				</a>
 			</div> 		
       	</nav>
@@ -160,12 +168,12 @@
     @yield('content')
 </main>
 
-<footer class="bg-dark mt-5 bg">
+<footer class="mt-5" style="background-color: #1f2b1a">
 	<div class="container pb-5 pt-3">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="footer-card">
-					<h3>Get In Touch</h3>
+					<h3>Pasar Kepanjen</h3>
 					<p>No dolore ipsum accusam no lorem. <br>
 					123 Street, New York, USA <br>
 					exampl@example.com <br>
@@ -195,9 +203,8 @@
 				<div class="footer-card">
 					<h3>My Account</h3>
 					<ul>
-						<li><a href="#" title="Sell">Login</a></li>
-						<li><a href="#" title="Advertise">Register</a></li>
-						<li><a href="#" title="Contact Us">My Orders</a></li>						
+						<li><a href="{{ route('account.login') }}" title="Sell">Login</a></li>
+						<li><a href="{{ route('account.register') }}" title="Advertise">Register</a></li>						
 					</ul>
 				</div>
 			</div>			
@@ -208,7 +215,6 @@
 			<div class="row">
 				<div class="col-12 mt-3">
 					<div class="copy-right text-center">
-						<p>© Copyright 2022 Amazing Shop. All Rights Reserved</p>
 					</div>
 				</div>
 			</div>

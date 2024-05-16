@@ -9,7 +9,7 @@
                     <h1>Products</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('products.create') }}" class="btn btn-primary">New Product</a>
+                    <a href="{{ route('products.create') }}" class="btn" style="background: #dbb143; color: white">New Product</a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                 <h1>Suppliers</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('suppliers.create') }}" class="btn btn-primary">New Supplier</a>
+                <a href="{{ route('suppliers.create') }}" class="btn" style="background: #dbb143; color: white">New Supplier</a>
             </div>
         </div>
     </div>

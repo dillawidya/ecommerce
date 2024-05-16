@@ -9,7 +9,7 @@
                 <h1>Shipping Management</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('shipping.create') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('shipping.create') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn" style="background: #dbb143; color: white">Update</button>
                             </div>
                         </div>						
                     </div>

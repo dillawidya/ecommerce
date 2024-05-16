@@ -5,8 +5,10 @@
     <div class="container">
         <div class="light-font">
             <ol class="breadcrumb primary-color mb-0">
-                <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Home</a></li>
-                <li class="breadcrumb-item active">Shop</li>
+                {{-- <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Home</a></li>
+                <li class="breadcrumb-item active">Shop</li> --}}
+                <li class="breadcrumb-item" style="color: #dbb143;"><i class="fas fa-home" style="margin-right: 5px"></i>Shop</li>
+
             </ol>
         </div>
     </div>
@@ -127,7 +129,7 @@
     rangeSlider = $(".js-range-slider").ionRangeSlider({
         type: "double",
         min: 0,
-        max: 1000000,
+        max: 500000,
         from: {{ ($priceMin) }},
         step: 10,
         to: {{ ($priceMax) }},

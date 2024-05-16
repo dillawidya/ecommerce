@@ -48,7 +48,7 @@
                 </div>							
             </div>
             <div class="pb-5 pt-3">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn" style="background: #dbb143; color: white">Update</button>
             </div>
         </form>
     </div>

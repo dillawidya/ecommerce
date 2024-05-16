@@ -9,7 +9,7 @@
                     <h1>Order: #{{ $order->id }}</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('orders.index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('orders.index') }}" class="btn btn-warning">Back</a>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                                     <input placeholder="Shipped Date" value="{{ $order->shipped_date }}" type="text" name="shipped_date" id="shipped_date" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <button class="btn btn-primary">Update</button>
+                                    <button class="btn" style="background: #dbb143; color: white">Update</button>
                                 </div>
                             </div>
                         </form>
@@ -137,7 +137,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <button class="btn btn-primary">Send</button>
+                                    <button class="btn" style="background: #dbb143; color: white">Send</button>
                                 </div>
                             </form>
                         </div>
