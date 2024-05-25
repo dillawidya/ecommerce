@@ -19,13 +19,13 @@ class FrontController extends Controller
                         ->latest('products.id')
                         ->leftJoin('transaksis', 'transaksis.id', '=', 'products.transaksi_id')
                         ->where('is_featured','Yes')
-                        ->where('status',1)->take(8)->get();
+                        ->where('status',1)->take(4)->get();
         $data['featuredProducts'] = $products;
 
         $latestProducts = Product::select('products.*', 'transaksis.nama_resep as titleName')
                             ->latest('products.id')
                             ->leftJoin('transaksis', 'transaksis.id', '=', 'products.transaksi_id')
-                            ->where('status',1)->take(8)->get();
+                            ->where('status',1)->take(4)->get();
         $data['latestProducts'] = $latestProducts;
 
         return view('front.home', $data);

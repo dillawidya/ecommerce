@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="story">History</label>
+                                            <label for="story">Story</label>
                                             <textarea name="story" id="story" cols="30" rows="10" class="summernote" placeholder="Story"></textarea>
                                         </div>
                                     </div> 

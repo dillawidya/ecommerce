@@ -72,6 +72,7 @@ class DiscountCodeController extends Controller
             $discountCode->max_uses_user = $request->max_uses_user;
             $discountCode->type = $request->type;
             $discountCode->discount_amount = $request->discount_amount;
+            $discountCode->min_amount = $request->min_amount;
             $discountCode->status = $request->status;
             $discountCode->starts_at = $request->starts_at;
             $discountCode->expires_at = $request->expires_at;

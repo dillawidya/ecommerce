@@ -9,6 +9,7 @@ use App\Models\Wishlist;
 use App\Models\OrderItem;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\DiscountCoupon;
 use App\Models\CustomerAddress;
 use App\Mail\ResetPasswordEmail;
 use Illuminate\Support\Facades\Auth;
@@ -370,5 +371,10 @@ class AuthController extends Controller
 
         return redirect()->route('account.login')->with('success','You have successfully updated your password');
 
+    }
+
+    public function coupons() {
+        $coupons = DiscountCoupon::where('expires_at', '>=', now())->get();
+        return view('front.account.coupon', compact('coupons'));
     }
 }

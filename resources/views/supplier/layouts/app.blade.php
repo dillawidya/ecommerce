@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Admin Pages</title>
+		<title>Supplier Pages</title>
 		<!-- Google Font: Source Sans Pro -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 		<!-- Font Awesome -->
@@ -50,8 +50,8 @@
 							<img src="{{ asset('admin-assets/img/avatar5.png') }}" class='img-circle elevation-2' width="40" height="40" alt="">
 						</a>
 						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3">
-							<h4 class="h4 mb-0"><strong>{{ Auth::guard('admin')->user()->name }}</strong></h4>
-							<div class="mb-3">{{ Auth::guard('admin')->user()->email }}</div>
+							<h4 class="h4 mb-0"><strong>{{ Auth::guard('supplier')->user()->name }}</strong></h4>
+							<div class="mb-3">{{ Auth::guard('supplier')->user()->email }}</div>
 							{{-- <div class="dropdown-divider"></div>
 							<a href="#" class="dropdown-item">
 								<i class="fas fa-user-cog mr-2"></i> Settings								
@@ -61,7 +61,7 @@
 								<i class="fas fa-lock mr-2"></i> Change Password
 							</a>
 							<div class="dropdown-divider"></div>
-							<a href="{{ route('admin.logout') }}" class="dropdown-item text-danger">
+							<a href="{{ route('supplier.logout') }}" class="dropdown-item text-danger">
 								<i class="fas fa-sign-out-alt mr-2"></i> Logout							
 							</a>							
 						</div>
@@ -70,7 +70,7 @@
 			</nav>
 			<!-- /.navbar -->
 			<!-- Main Sidebar Container -->
-			@include('admin.layouts.sidebar')
+			@include('supplier.layouts.sidebar')
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				
@@ -107,7 +107,7 @@
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				}
 			});
- 
+
 			$('.summernote').summernote({
                     height: '250px'
             });

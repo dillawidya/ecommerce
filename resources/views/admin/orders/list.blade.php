@@ -42,7 +42,7 @@
             <div class="card-body table-responsive p-0">								
                 <table class="table table-hover text-nowrap">
                     <thead>
-                        <tr>
+                        <tr style="background: #dbb143; color: white">
                             <th width="60">Order#</th>
                             <th>Customer</th>
                             <th>Email</th>

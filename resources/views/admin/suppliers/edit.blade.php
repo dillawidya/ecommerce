@@ -6,7 +6,7 @@
     <div class="container-fluid my-2">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit Supplier</h1>
+                <h1>Order to Supplier</h1>
             </div>
             <div class="col-sm-6 text-right">
                 <a href="{{ route('suppliers.index') }}" class="btn btn-warning">Back</a>
@@ -23,34 +23,55 @@
             <div class="card">
                 <div class="card-body">								
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $supplier->name }}">	
+                                <label for="nama_produk">Supplier Name</label>
+                                <input type="text" value="{{ $supplier->user->name }}" readonly name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk">	
                                 <p></p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="address">Address</label>
-                                <textarea type="text" name="address" id="address" class="form-control" placeholder="Address">{{ $supplier->address }}</textarea>	
+                                <label for="nama_produk">Nama Produk</label>
+                                <input type="text" value="{{ $supplier->nama_produk }}" readonly name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk">	
                                 <p></p>
                             </div>
                         </div>	
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="telp">Telephone</label>
-                                <input type="text" name="telp" id="telp" class="form-control" placeholder="Slug" value="{{ $supplier->telp }}">	
+                                <label for="harga">Harga Per KG</label>
+                                <input type="text" value="{{ number_format($supplier->harga) }}" readonly name="harga" id="harga" class="form-control" placeholder="Harga">	
                                 <p></p>
                             </div>
-                        </div>								
+                        </div>
+                        <input type="hidden" value="{{  $supplier->qty_awal }}" readonly name="qty_awal" id="qty_awal" class="form-control" placeholder="Kuantiti">	
+                        <input type="hidden" class="form-control" id="qty_beli" readonly name="qty_beli" value="{{  old('qty_beli',$supplier->qty_beli) }}" required>
+
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="qty_awal">Stock Total</label>
+                                <input type="text" value="{{  $qty_value }}" readonly name="qty_awal" id="qty_awal" class="form-control" placeholder="Kuantiti">	
+                                <p></p>
+                            </div>	
+                        </div>	
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="qty_belibaru">Kuantiti Beli</label>
+                                <input type="text" name="qty_belibaru" id="qty_belibaru" class="form-control" placeholder="Kuantiti">	
+                                <p></p>
+                            </div>	
+                        </div>					
+                    </div>
+                    <div class="pt-3">
+                        <button type="submit" class="btn" style="background: #dbb143; color: white">Save</button>
+                        <a href="https://wa.me/{{ $supplier->user->phone }}?text=Tolong%20siapkan%20{{ $supplier->nama_produk }}%20Harga%20{{ number_format($supplier->harga) }}%20Sebanyak%20:%20...%20KG">
+                            Order to Whatsapp
+                        </a>
                     </div>
                 </div>							
             </div>
-            <div class="pb-5 pt-3">
-                <button type="submit" class="btn" style="background: #dbb143; color: white">Update</button>
-                <a href="{{ route('suppliers.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
-            </div>
+            
         </form>
     </div>
     <!-- /.card -->
@@ -63,6 +84,7 @@
 $("#editSupplierForm").submit(function(event){
     event.preventDefault();
     var element = $(this);
+    
     $("button[type=submit]").prop('disabled',true);
     $.ajax({
         url: '{{ route("suppliers.update", $supplier->id) }}',
@@ -76,15 +98,6 @@ $("#editSupplierForm").submit(function(event){
 
                 window.location.href="{{ route('suppliers.index') }}";
 
-
-                // $("#name").removeClass('is-invalid')
-                //     .siblings('p')
-                //     .removeClass('invalid-feedback').html("");
-
-                // $("#slug").removeClass('is-invalid')
-                // .siblings('p')
-                // .removeClass('invalid-feedback').html("");
-
             } else {
 
                 if (response['notFound'] == true) {
@@ -92,36 +105,19 @@ $("#editSupplierForm").submit(function(event){
                 }
 
                 var errors = response['errors'];
-                if (errors['name']) {
-                    $("#name").addClass('is-invalid')
+                if (errors['qty_belibaru']) {
+                    $("#qty_belibaru").addClass('is-invalid')
                     .siblings('p')
-                    .addClass('invalid-feedback').html(errors['name']);
+                    .addClass('invalid-feedback').html(errors['qty_belibaru']);
                 } else {
-                    $("#name").removeClass('is-invalid')
+                    $("#qty_belibaru").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback').html("");
                 }
+            } 
 
-                if (errors['address']) {
-                    $("#address").addClass('is-invalid')
-                    .siblings('p')
-                    .addClass('invalid-feedback').html(errors['address']);
-                } else {
-                    $("#address").removeClass('is-invalid')
-                    .siblings('p')
-                    .removeClass('invalid-feedback').html("");
-                }
-
-                if (errors['telp']) {
-                    $("#telp").addClass('is-invalid')
-                    .siblings('p')
-                    .addClass('invalid-feedback').html(errors['telp']);
-                } else {
-                    $("#telp").removeClass('is-invalid')
-                    .siblings('p')
-                    .removeClass('invalid-feedback').html("");
-                }
-            }
+            
+            
 
            
 
@@ -131,21 +127,5 @@ $("#editSupplierForm").submit(function(event){
     })
 });
 
-$("#name").change(function(){
-    element = $(this);
-    $("button[type=submit]").prop('disabled',true);
-    $.ajax({
-        url: '{{ route("getSlug") }}',
-        type: 'get',
-        data: {title: element.val()},
-        dataType: 'json',
-        success: function(response){
-            $("button[type=submit]").prop('disabled',false);
-            if (response["status"] == true) {
-                $("#slug").val(response["slug"]);
-            }
-        }
-    }); 
-});
 </script>
 @endsection

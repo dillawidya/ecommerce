@@ -57,8 +57,8 @@
             <div class="card-body">								
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped">
-                            <tr>
+                        <table class="table table-hover text-nowrap">
+                            <tr style="background: #dbb143; color: white">
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Amount</th>

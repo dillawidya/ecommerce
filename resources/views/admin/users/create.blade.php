@@ -51,12 +51,29 @@
                                 <p></p>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="address">Address</label>
+                                <textarea type="text" name="address" id="address" class="form-control" placeholder="Phone"></textarea>	
+                                <p></p>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="phone">Status</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1">Active</option>
                                     <option value="0">Block</option>
+                                </select>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="phone">Role</label>
+                                <select name="role" id="role" class="form-control">
+                                    <option value="">Select Role</option>
+                                    <option value="3">Supplier</option>
                                 </select>
                                 <p></p>
                             </div>
@@ -106,6 +123,11 @@ $("#userForm").submit(function(event){
                 $("#password").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback').html("");
+                
+                $("#role").removeClass('is-invalid')
+                .siblings('p')
+                .removeClass('invalid-feedback').html("");
+                    
 
              window.location.href="{{ route('users.index') }}";
 
@@ -148,6 +170,16 @@ $("#userForm").submit(function(event){
                     .addClass('invalid-feedback').html(errors['password']);
                 } else {
                     $("#password").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+                }
+
+                if (errors['role']) {
+                    $("#role").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback').html(errors['role']);
+                } else {
+                    $("#role").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback').html("");
                 }

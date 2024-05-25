@@ -23,7 +23,11 @@ use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\DiscountCodeController;
+use App\Http\Controllers\admin\OrderSupplierController;
 use App\Http\Controllers\admin\PurchaseDetailController;
+use App\Http\Controllers\supplier\HomeSupplierController;
+use App\Http\Controllers\supplier\SupplierLoginController;
+use App\Http\Controllers\supplier\SupplierProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +90,7 @@ Route::group(['prefix' => 'account'], function(){
         Route::post('/process-change-password', [AuthController::class, 'changePassword'])->name('account.processChangePassword');
 
         Route::get('/my-orders', [AuthController::class, 'orders'])->name('account.orders');
+        Route::get('/coupons', [AuthController::class, 'coupons'])->name('account.coupons');
         Route::get('/my-wishlist', [AuthController::class, 'wishlist'])->name('account.wishlist');
         Route::post('/remove-product-from-wishlist', [AuthController::class, 'removeProductFromWishlist'])->name('account.removeProductFromWishlist');
         Route::get('/order-detail/{orderId}', [AuthController::class, 'orderDetail'])->name('account.orderDetail');
@@ -95,6 +100,30 @@ Route::group(['prefix' => 'account'], function(){
     });
 });
 
+
+Route::group(['prefix' => 'supplier'], function(){
+
+    Route::group(['middleware' => 'supplier.guest'], function(){
+        Route::get('/login',[SupplierLoginController::class, 'index'])->name('supplier.login');
+        Route::post('/authenticate',[SupplierLoginController::class, 'authenticate'])->name('supplier.authenticate');
+
+    });
+
+    Route::group(['middleware' => 'supplier.auth'], function(){
+        Route::get('/logout',[HomeSupplierController::class, 'logout'])->name('supplier.logout');
+        Route::get('/dashboard',[HomeSupplierController::class, 'index'])->name('supplier.dashboard');
+
+        //Route productsupplier
+        Route::get('/supplier-products', [SupplierProductController::class, 'index'])->name('supplier-products.index');
+        Route::post('/supplier-products', [SupplierProductController::class, 'store'])->name('supplier-products.store');
+        Route::get('/supplier-products/{item}/edit',[SupplierProductController::class, 'edit'])->name('supplier-products.edit');
+        Route::put('/supplier-products/{item}',[SupplierProductController::class, 'update'])->name('supplier-products.update');
+        // Route::delete('/supplier-products/{item}',[SupplierProductController::class, 'destroy'])->name('supplier-products.delete');
+
+
+    });
+
+});
 
 Route::group(['prefix' => 'admin'], function(){
 
@@ -152,6 +181,9 @@ Route::group(['prefix' => 'admin'], function(){
         Route::put('/suppliers/{supplier}',[SupplierController::class, 'update'])->name('suppliers.update');
         Route::delete('/suppliers/{supplier}',[SupplierController::class, 'destroy'])->name('suppliers.delete');
 
+        //OrderSupplier
+        Route::get('/order-supplier', [OrderSupplierController::class, 'index']);
+        Route::post('/order-supplier/send', [OrderSupplierController::class, 'send']);
 
         // Transaksi Routes
         Route::get('/transaksi',[TransaksiController::class, 'index'])->name('transaksi.index');

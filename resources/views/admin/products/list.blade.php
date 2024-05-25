@@ -32,7 +32,7 @@
             
                                 <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fas fa-search" ></i>
                                 </button>
                                 </div>
                             </div>
@@ -41,8 +41,8 @@
                     </div>
                 </form>
                 <div class="card-body table-responsive p-0">								
-                    <table class="table table-hover text-nowrap">
-                        <thead>
+                    <table class="table table-hover text-nowrap" >
+                        <thead style="background: #dbb143; color: white">
                             <tr>
                                 <th width="60">ID</th>
                                 <th width="80"></th>

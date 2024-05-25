@@ -78,9 +78,11 @@
 <header class="navbar-collapse">
 	<div class="container">
 		<nav class="navbar navbar-expand-xl" id="navbar">
-			<a href="index.php" class="text-decoration-none mobile-logo">
-				<span class="h2 text-uppercase text-primary bg-dark">Cooks</span>
-				<span class="h2 text-uppercase text-white px-2">SHOP</span>
+			<a href="index.php" class="h2 text-uppercase text-primary mobile-logo" style="width: 50px">
+				<img src="{{ asset('front-assets/images/logo.png') }}" alt="">
+
+				{{-- <span class="h2 text-uppercase text-primary bg-dark">Cooks</span>
+				<span class="h2 text-uppercase text-white px-2">SHOP</span> --}}
 			</a>
 			<button class="navbar-toggler menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       			<!-- <span class="navbar-toggler-icon icon-menu"></span> -->
@@ -174,10 +176,8 @@
 			<div class="col-md-4">
 				<div class="footer-card">
 					<h3>Pasar Kepanjen</h3>
-					<p>No dolore ipsum accusam no lorem. <br>
-					123 Street, New York, USA <br>
-					exampl@example.com <br>
-					000 000 0000</p>
+					<p>Jl. Achmad Yani Kepanjen, Kabupaten Malang</p>
+					<p>0341-395283</p>
 				</div>
 			</div>
 

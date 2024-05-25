@@ -38,6 +38,7 @@ class UserController extends Controller
             'password' => 'required|min:5',
             'email' => 'required|email|unique:users',
             'phone' => 'required',
+            'role' => 'required',
 
         ]);
 
@@ -48,7 +49,9 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
+            $user->address = $request->address;
             $user->status = $request->status;
+            $user->role = $request->role;
             $user->save();
 
             $message = 'User Added Successfully';

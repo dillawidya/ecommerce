@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">                             
-                <form action="{{ route('transaksi.store')}}" method="post">
+                <form action="{{ route('transaksi.store')}}" method="post" >
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
@@ -139,5 +139,88 @@
         $('.totalHarga').html(formatRupiah(totalHarga.toString()));
 
     }
+
+    $("#ItemForm").submit(function(event){
+    event.preventDefault();
+    var element = $("#ItemForm");
+    $("button[type=submit]").prop('disabled',true);
+    $.ajax({
+        url: '{{ route("items.store") }}',
+        type: 'post',
+        data: element.serializeArray(),
+        dataType: 'json',
+        success: function(response){
+            $("button[type=submit]").prop('disabled',false);
+
+            if (response["status"] == true) {
+
+                window.location.href="{{ route('items.index') }}";
+                
+                $("#name").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+
+                $("#hpp").removeClass('is-invalid')
+                .siblings('p')
+                .removeClass('invalid-feedback').html("");
+
+                $("#category").removeClass('is-invalid')
+                .siblings('p')
+                .removeClass('invalid-feedback').html("");
+
+                $("#supplier").removeClass('is-invalid')
+                .siblings('p')
+                .removeClass('invalid-feedback').html("");
+
+            } else {
+                var errors = response['errors'];
+
+                if (errors['name']) {
+                    $("#name").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback').html(errors['name']);
+                } else {
+                    $("#name").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+                }
+
+                if (errors['hpp']) {
+                    $("#hpp").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback').html(errors['hpp']);
+                } else {
+                    $("#hpp").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+                }
+
+                if (errors['category']) {
+                    $("#category").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback').html(errors['category']);
+                } else {
+                    $("#category").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+                }
+
+                if (errors['supplier']) {
+                    $("#supplier").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback').html(errors['supplier']);
+                } else {
+                    $("#supplier").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback').html("");
+                }
+                
+            }
+                
+        }, error: function(jqXHR, exception){
+            console.log("Something went wrong");
+        }
+    })
+});
 </script>
 @endsection

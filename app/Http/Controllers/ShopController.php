@@ -144,16 +144,16 @@ class ShopController extends Controller
             ]);
         }
 
-        $count = ProductRating::where('email',$request->email)->count();
+        // $count = ProductRating::where('email',$request->email)->count();
 
-        if ($count > 0) {
+        // if ($count > 0) {
 
-            session()->flash('error','You Already Rating This Product');
+        //     session()->flash('error','You Already Rating This Product');
 
-            return response()->json([
-                'status' => true
-            ]);
-        }
+        //     return response()->json([
+        //         'status' => true
+        //     ]);
+        // }
 
         $productRating = new ProductRating;
         $productRating->product_id = $id;

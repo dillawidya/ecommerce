@@ -16,8 +16,8 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3">
                         <h1 class="display-4 text-white mb-3">FOODS</h1>
-                        <p class="mx-md-5 px-5">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="#">Shop Now</a>
+                        <p class="mx-md-5 px-5">Jelajahi kelezatan dunia di ujung jari Anda! Dari masakan tradisional hingga kreasi modern</p>
+                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="{{ route('front.shop') }}">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -32,8 +32,8 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3">
                         <h1 class="display-4 text-white mb-3">DRINKS</h1>
-                        <p class="mx-md-5 px-5">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="#">Shop Now</a>
+                        <p class="mx-md-5 px-5">Jelajahi kelezatan dunia di ujung jari Anda! Dari masakan tradisional hingga kreasi modern</p>
+                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="{{ route('front.shop') }}">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -49,8 +49,8 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3">
                         <h1 class="display-4 text-white mb-3">CAKES</h1>
-                        <p class="mx-md-5 px-5">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="#">Shop Now</a>
+                        <p class="mx-md-5 px-5">Jelajahi kelezatan dunia di ujung jari Anda! Dari masakan tradisional hingga kreasi modern</p>
+                        <a class="btn btn-outline-light py-2 px-4 mt-3" href="{{ route('front.shop') }}">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -77,13 +77,13 @@
             <div class="col-lg-3 ">
                 <div class="box shadow-lg">
                     <div class="fa icon fa-shipping-fast text-primary m-0 mr-3"></div>
-                    <h2 class="font-weight-semi-bold m-0">Free Shipping</h2>
+                    <h2 class="font-weight-semi-bold m-0">24/7 Shipping</h2>
                 </div>                    
             </div>
             <div class="col-lg-3">
                 <div class="box shadow-lg">
                     <div class="fa icon fa-exchange-alt text-primary m-0 mr-3"></div>
-                    <h2 class="font-weight-semi-bold m-0">14-Day Return</h2>
+                    <h2 class="font-weight-semi-bold m-0">Fast Delivery</h2>
                 </div>                    
             </div>
             <div class="col-lg-3 ">
@@ -191,7 +191,7 @@
                 <div class="col-md-3 mb-4">
                     <div class="card product-card h-100">
                         <div class="product-image position-relative">
-                            <a href="{{ route("front.product", $product->id) }}" class="product-img">
+                            <a href="{{ route("front.product", $product->id) }}" class="product-img" >
                                 @if (!empty($product->image))
                                     <img class="card-img-top" src="{{ asset('uploads/product/'.$product->image) }}">
                                 @else
@@ -223,9 +223,9 @@
                                 <a class="h6 link" href="product.php">{{ $product->titleName }}</a>
                             <div class="price mt-2">
 
-                                <span class="h5"><strong>{{ $product->price }}</strong></span>
+                                <span class="h5"><strong>Rp. {{ number_format($product->price) }}</strong></span>
                                 @if ($product->compare_price > 0)
-                                <span class="h6 text-underline"><del>{{ $product->compare_price }}</del></span>
+                                <span class="h6 text-underline"><del>Rp. {{ number_format($product->compare_price) }}</del></span>
                                 @endif
                             </div>
                         </div>                        

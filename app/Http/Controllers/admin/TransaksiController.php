@@ -17,7 +17,7 @@ class TransaksiController extends Controller
 
     public function create() {
 
-        $daftars = Item::all();
+        $daftars = Item::orderBy('created_at','desc')->get();
         return view('admin.transaksi.create', compact('daftars'));
     }
 
