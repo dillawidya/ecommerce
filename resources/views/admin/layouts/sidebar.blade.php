@@ -34,18 +34,13 @@
                     <a href="{{ route('brands.index') }}" class="nav-link">
                         <svg class="h-6 nav-icon w-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                          </svg>
+                        </svg>
                         <p>Brands</p>
                     </a>
                 </li> --}}
+                
                 <li class="nav-item">
-                    <a href="{{ route('suppliers.index') }}" class="nav-link" style="color: #dbb143;">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>Suppliers</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('items.index') }}" class="nav-link" style="color: #dbb143;">
+                    <a href="{{ route('item-products.index') }}" class="nav-link" style="color: #dbb143;">
                         <i class="nav-icon fas fa-cubes"></i>
                         <p>Items</p>
                     </a>
@@ -64,6 +59,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('manage-stocks.index') }}" class="nav-link" style="color: #dbb143;">
+                        <i class="nav-icon  fas fa-box-open" aria-hidden="true"></i>
+                        <p>Manage Stock</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('users.index') }}" class="nav-link" style="color: #dbb143;">
                         <i class="nav-icon  fas fa-users"></i>
                         <p>Users</p>
@@ -75,7 +76,16 @@
                         <p>Pages</p>
                     </a>
                 </li>
+
                 <li class="header" style="color: white">TRANSACTION</li>
+                <li class="nav-item">
+                    <a href="{{ route('suppliers.index') }}" class="nav-link" style="color: #dbb143;">
+                        <svg class="h-6 nav-icon w-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>  
+                        <p>Product Suppliers</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('transaksi.index') }}" class="nav-link" style="color: #dbb143;">
                         <i class="nav-icon fa fa-download"></i>
@@ -101,6 +111,37 @@
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Orders</p>
                     </a>
+                </li>
+
+                {{-- <li class="nav-item">
+                    <a href="{{ route('reports.index') }}" class="nav-link" style="color: #dbb143;">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>Report</p>
+                    </a>
+                </li> --}}
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link" style="color: #dbb143;">
+                    <i class="nav-icon fas fa-chart-line"></i>
+                    <p>
+                        Report
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('report-profits.reportProfit') }}" class="nav-link" style="color: #dbb143;">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Report Profit</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('report-purchases.reportPurchase') }}" class="nav-link" style="color: #dbb143;">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Report Purchases</p>
+                        </a>
+                    </li>
+                    </ul>
                 </li>
                 
                 							

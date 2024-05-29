@@ -21,10 +21,16 @@
                 <form action="{{ route('transaksi.store')}}" method="post" >
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="mb-3">
                                 <label for="nama_resep">Name</label>
                                 <input type="text" name="nama_resep" id="nama_resep" class="form-control" placeholder="Name">   
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="qty">Qty</label>
+                                <input type="text" name="qty" id="qty" class="form-control" placeholder="Qty">   
                             </div>
                         </div>
                     </div>
@@ -34,7 +40,7 @@
                                 <label for="id_item">Item</label>
                                 <select class="form-control" id="id_item">
                                     @foreach ($daftars as $daftar)
-                                        <option value="{{$daftar->id_item}}" data-nama="{{$daftar->name}}" data-harga="{{$daftar->hpp}}" data-id="{{$daftar->id_item}}">{{$daftar->name}} Rp. {{number_format($daftar->hpp)}}</option>
+                                        <option value="{{$daftar->id}}" data-nama="{{$daftar->name}}" data-harga="{{$daftar->hpp}}" data-id="{{$daftar->id}}">{{$daftar->name}} Rp. {{number_format($daftar->hpp)}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -145,7 +151,7 @@
     var element = $("#ItemForm");
     $("button[type=submit]").prop('disabled',true);
     $.ajax({
-        url: '{{ route("items.store") }}',
+        url: '{{ route("item-products.store") }}',
         type: 'post',
         data: element.serializeArray(),
         dataType: 'json',
@@ -154,7 +160,7 @@
 
             if (response["status"] == true) {
 
-                window.location.href="{{ route('items.index') }}";
+                window.location.href="{{ route('item-products.index') }}";
                 
                 $("#name").removeClass('is-invalid')
                     .siblings('p')

@@ -21,32 +21,7 @@ class HomeController extends Controller
         $totalCustomers = User::where('role',1)->count();
         $totalRevenue = Order::where('status','!=','cancelled')->sum('grand_total');
 
-        //This month revenue
-        $startOfMonth = Carbon::now()->startOfMonth()->format('Y-m-d');
-        $currentDate =  Carbon::now()->format('Y-m-d');
-
-        $revenueThisMonth = Order::where('status','!=','cancelled')
-                                ->whereDate('created_at','>=',$startOfMonth)
-                                ->whereDate('created_at','<=',$currentDate)
-                                ->sum('grand_total');
-
-        //Last mont revenue
-        $lastMonthStartDate = Carbon::now()->subMonth()->startOfMonth()->format('Y-m-d');
-        $lastMonthEndtDate = Carbon::now()->subMonth()->endOfMonth()->format('Y-m-d');
-        $lastMonthName = Carbon::now()->subMonth()->startOfMonth()->format('M');
-
-        $revenueLastMonth = Order::where('status','!=','cancelled')
-                                ->whereDate('created_at','>=',$lastMonthStartDate)
-                                ->whereDate('created_at','<=',$lastMonthEndtDate)
-                                ->sum('grand_total');
-
-        //Last 30 days sale
-        $lastThirtyDayStartDate = Carbon::now()->subDays(30)->format('Y-m-d');
         
-        $revenueLastThirtyDays = Order::where('status','!=','cancelled')
-                                ->whereDate('created_at','>=',$lastThirtyDayStartDate)
-                                ->whereDate('created_at','<=',$currentDate)
-                                ->sum('grand_total');
 
 
         //Delete temp image here
@@ -71,10 +46,7 @@ class HomeController extends Controller
             'totalProducts' => $totalProducts,
             'totalCustomers' => $totalCustomers,
             'totalRevenue' => $totalRevenue,
-            'revenueThisMonth' => $revenueThisMonth,
-            'revenueLastMonth' => $revenueLastMonth,
-            'revenueLastThirtyDays' => $revenueLastThirtyDays,
-            'lastMonthName' => $lastMonthName,
+           
         ]);
     }
 

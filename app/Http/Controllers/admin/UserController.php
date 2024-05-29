@@ -49,6 +49,12 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
+
+            $user->phone = str_replace(' ', '', $user->phone);
+            if (!str_starts_with($user->phone, '+62')) {
+                $user->phone = '+62' . ltrim($user->phone, '0');
+            }
+
             $user->address = $request->address;
             $user->status = $request->status;
             $user->role = $request->role;
@@ -116,6 +122,12 @@ class UserController extends Controller
                 $user->password = Hash::make($request->password);
             }
             $user->phone = $request->phone;
+
+            $user->phone = str_replace(' ', '', $user->phone);
+            if (!str_starts_with($user->phone, '+62')) {
+                $user->phone = '+62' . ltrim($user->phone, '0');
+            }
+
             $user->status = $request->status;
             $user->save();
 

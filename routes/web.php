@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\CategoryController;
@@ -21,6 +22,8 @@ use App\Http\Controllers\admin\SupplierController;
 use App\Http\Controllers\admin\TransaksiController;
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\TempImagesController;
+use App\Http\Controllers\admin\ItemProductController;
+use App\Http\Controllers\admin\ManageStockController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\OrderSupplierController;
@@ -165,12 +168,12 @@ Route::group(['prefix' => 'admin'], function(){
 
        
         //Items Routes
-        Route::get('/items',[ItemController::class, 'index'])->name('items.index');
-        Route::get('/items/create',[ItemController::class, 'create'])->name('items.create');
-        Route::post('/items',[ItemController::class, 'store'])->name('items.store');
-        Route::get('/items/{Item}/edit',[ItemController::class, 'edit'])->name('items.edit');
-        Route::put('/items/{Item}',[ItemController::class, 'update'])->name('items.update');
-        Route::delete('/items/{Item}',[ItemController::class, 'destroy'])->name('items.delete');
+        Route::get('/item-products',[ItemProductController::class, 'index'])->name('item-products.index');
+        Route::get('/item-products/create',[ItemProductController::class, 'create'])->name('item-products.create');
+        Route::post('/item-products',[ItemProductController::class, 'store'])->name('item-products.store');
+        Route::get('/item-products/{Item}/edit',[ItemProductController::class, 'edit'])->name('item-products.edit');
+        Route::put('/item-products/{Item}',[ItemProductController::class, 'update'])->name('item-products.update');
+        Route::delete('/item-products/{Item}',[ItemProductController::class, 'destroy'])->name('item-products.delete');
 
 
         //Suppliers Routes
@@ -211,6 +214,16 @@ Route::group(['prefix' => 'admin'], function(){
         Route::put('/shipping/{id}',[ShippingController::class, 'update'])->name('shipping.update');
         Route::delete('/shipping/{id}',[ShippingController::class, 'destroy'])->name('shipping.delete');
 
+        
+        //Manage Stock Routes
+        Route::get('/manage-stocks',[ManageStockController::class, 'index'])->name('manage-stocks.index');
+        Route::get('/manage-stocks/create',[ManageStockController::class, 'create'])->name('manage-stocks.create');
+        Route::post('/manage-stocks',[ManageStockController::class, 'store'])->name('manage-stocks.store');
+        Route::get('/manage-stocks/{manageStock}/edit',[ManageStockController::class, 'edit'])->name('manage-stocks.edit');
+        Route::put('/manage-stocks/{manageStocks}',[ManageStockController::class, 'update'])->name('manage-stocks.update');
+        Route::delete('/manage-stocks/{manageStocks}',[ManageStockController::class, 'destroy'])->name('manage-stocks.delete');
+
+
 
         //Coupon Code Routes
         Route::get('/coupons',[DiscountCodeController::class, 'index'])->name('coupons.index');
@@ -226,6 +239,10 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/orders/{id}',[OrderController::class, 'detail'])->name('orders.detail');
         Route::post('/order/change-status/{id}',[OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
         Route::post('/order/send-email/{id}',[OrderController::class, 'sendInvoiceEmail'])->name('orders.sendInvoiceEmail');
+
+        //Report Routes
+        Route::get('/report-profits',[ReportController::class, 'reportProfit'])->name('report-profits.reportProfit');
+        Route::get('/report-purchases',[ReportController::class, 'reportPurchase'])->name('report-purchases.reportPurchase');
 
 
         //User Routes

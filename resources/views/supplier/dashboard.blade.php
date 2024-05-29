@@ -18,36 +18,34 @@
 <section class="content">
     <!-- Default box -->
     <div class="container-fluid">
+        {{-- <div class="row">
+            <h1 class="h1 text-bold mt-2">Selamat Datang, </h1><i class="h2 mt-3 ml-2 mb-4">{{ $supplier->name }}</i>
+        </div> --}}
         <div class="row">
-            <h1 class="h1 text-bold mt-2">Selamat Datang, </h1><i class="h2 mt-3 ml-2">{{ $supplier->name }}</i>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-6">							
-                <div class="small-box card mt-3">
+
+            <div class="col-lg-3 col-6 mt-3">
+                <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>{{ $supplierProductCount }}</h3>
-                        <p>Total Produk</p>
+                    <h3>{{ $supplierProductCount }}</h3>
+                    <p>Total Produk</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-box-open"></i>
                     </div>
-                    <div class="small-box card" style="border-radius: 0px">
-                        <a href="{{ route('supplier-products.index') }}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                    <a href="{{ route('supplier-products.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-6">							
-                <div class="small-box card mt-3">
+
+            <div class="col-lg-3 col-6 mt-3">
+                <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>Rp. {{ number_format($totalPendapatan) }}</h3>
-                        <p>Total Pendapatan</p>
+                    <h3>Rp. {{ number_format($totalPendapatan) }}</h3>
+                    <p>Total Pendapatan</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-money-bill-wave"></i>
                     </div>
-                    <div class="small-box card" style="border-radius: 0px">
-                        <a href="javascript:void(0);" class="small-box-footer">&nbsp;</a>
-                    </div>
+                    <a href="javascript:void(0);" class="small-box-footer">&nbsp;</a>
                 </div>
             </div>
         </div>

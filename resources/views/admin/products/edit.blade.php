@@ -105,7 +105,7 @@
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Inventory</h2>								
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="sku">SKU (Stock Keeping Unit)</label>
                                             <input type="text" name="sku" id="sku" class="form-control" placeholder="sku" value="{{ $product->sku }}">
@@ -117,7 +117,7 @@
                                             <label for="barcode">Barcode</label>
                                             <input type="text" name="barcode" id="barcode" class="form-control" placeholder="Barcode" value="{{ $product->barcode }}">	
                                         </div>
-                                    </div>   
+                                    </div>    --}}
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <div class="custom-control custom-checkbox">

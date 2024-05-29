@@ -7,7 +7,7 @@
                 <h1>Edit Produk</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('supplier-products.index') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('supplier-products.index') }}" class="btn btn-warning">Kembali</a>
             </div>
         </div>
     </div>

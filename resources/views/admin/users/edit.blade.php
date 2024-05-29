@@ -162,5 +162,25 @@ $("#userForm").submit(function(event){
     })
 });
 
+
+$(document).ready(function() {
+    $('#phone').on('focus', function() {
+        if ($(this).val() === '') {
+            $(this).val('+62');
+        }
+    });
+
+    $('#phone').on('blur', function() {
+        if ($(this).val() === '+62') {
+            $(this).val('');
+        }
+    });
+
+    $('#phone').on('input', function() {
+        if (!$(this).val().startsWith('+62')) {
+            $(this).val('+62');
+        }
+    });
+});
 </script>
 @endsection

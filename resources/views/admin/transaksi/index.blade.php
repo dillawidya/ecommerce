@@ -25,6 +25,8 @@
                             <th>Date</th>
                             <th>Recipe Name</th>
                             <th>Item Details</th>
+                            <th>Price</th>
+                            <th>Qty</th>
                             <th>Total Price</th>
                             <th>Action</th>
                         </tr>
@@ -39,12 +41,14 @@
                                 <td>{{$transaksi->nama_resep}}</td>
                                 <td>
                                     
-                                        @foreach ($transaksi->items as $item)   
+                                        @foreach ($transaksi->itemProducts as $item)   
                                             <li>{{$item->nama}}</li>
                                         @endforeach
                                     
                                 </td>
                                 <td>Rp. {{number_format($transaksi->total_harga)}}</td>
+                                <td>{{ $transaksi->qty }}</td>
+                                <td>Rp. {{number_format($transaksi->grand_total)}}</td>
                                 <td>
                                     <form action="{{ route('transaksi.destroy',$transaksi->id)}}" method="post" class="d-inline">
                                         @csrf

@@ -9,7 +9,7 @@
                 <h1>Edit Items</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('items.index') }}" class="btn btn-warning">Back</a>
+                <a href="{{ route('item-products.index') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $Item->name }}">	
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $itemProduct->name }}">	
                                 <p></p>
                             </div>
                         </div>
@@ -35,9 +35,9 @@
                                 <label for="name">Supplier</label>
                                 <select name="supplier" id="supplier" class="form-control">
                                     <option value="">Pilih Supplier</option>
-                                    @if ($suppliers->isNotEmpty())
-                                    @foreach ($suppliers as $supplier)
-                                    <option {{ ($Item->supplier_id == $supplier->id) ? 'selected' : '' }} value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                    @if ($users->isNotEmpty())
+                                    @foreach ($users as $supplier)
+                                    <option {{ ($itemProduct->user_id == $supplier->id) ? 'selected' : '' }} value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                     @endforeach
                                     @endif
                                 </select>
@@ -48,7 +48,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="price">Price</label>
-                                <input type="number" name="hpp" id="hpp" class="form-control" value="{{ $Item->hpp }}">	
+                                <input type="number" name="hpp" id="hpp" class="form-control" value="{{ $itemProduct->hpp }}">	
                                 <p></p>
                             </div>
                         </div>									
@@ -57,7 +57,7 @@
             </div>
             <div class="pb-5 pt-3">
                 <button type="submit" class="btn" style="background: #dbb143; color: white">Update</button>
-                <a href="{{ route('items.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                <a href="{{ route('item-products.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
             </div>
         </form>
     </div>
@@ -73,7 +73,7 @@ $("#editItemForm").submit(function(event){
     var element = $(this);
     $("button[type=submit]").prop('disabled',true);
     $.ajax({
-        url: '{{ route("items.update", $Item->id_item) }}',
+        url: '{{ route("item-products.update", $itemProduct->id) }}',
         type: 'put',
         data: element.serializeArray(),
         dataType: 'json',
@@ -82,21 +82,12 @@ $("#editItemForm").submit(function(event){
 
             if (response["status"] == true) {
 
-                window.location.href="{{ route('items.index') }}";
-
-
-                // $("#name").removeClass('is-invalid')
-                //     .siblings('p')
-                //     .removeClass('invalid-feedback').html("");
-
-                // $("#slug").removeClass('is-invalid')
-                // .siblings('p')
-                // .removeClass('invalid-feedback').html("");
+                window.location.href="{{ route('item-products.index') }}";
 
             } else {
 
                 if (response['notFound'] == true) {
-                    window.location.href = "{{ route('items.index') }}";
+                    window.location.href = "{{ route('item-products.index') }}";
                 }
 
                 var errors = response['errors'];
@@ -114,19 +105,9 @@ $("#editItemForm").submit(function(event){
                 if (errors['hpp']) {
                     $("#hpp").addClass('is-invalid')
                     .siblings('p')
-                    .addClass('invalid-feedback').html(errors['slug']);
+                    .addClass('invalid-feedback').html(errors['hpp']);
                 } else {
                     $("#hpp").removeClass('is-invalid')
-                    .siblings('p')
-                    .removeClass('invalid-feedback').html("");
-                }
-
-                if (errors['category']) {
-                    $("#category").addClass('is-invalid')
-                    .siblings('p')
-                    .addClass('invalid-feedback').html(errors['category']);
-                } else {
-                    $("#category").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback').html("");
                 }
@@ -148,23 +129,6 @@ $("#editItemForm").submit(function(event){
             console.log("Something went wrong");
         }
     })
-});
-
-$("#name").change(function(){
-    element = $(this);
-    $("button[type=submit]").prop('disabled',true);
-    $.ajax({
-        url: '{{ route("getSlug") }}',
-        type: 'get',
-        data: {title: element.val()},
-        dataType: 'json',
-        success: function(response){
-            $("button[type=submit]").prop('disabled',false);
-            if (response["status"] == true) {
-                $("#slug").val(response["slug"]);
-            }
-        }
-    }); 
 });
 </script>
 @endsection

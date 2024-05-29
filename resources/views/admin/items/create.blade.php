@@ -9,7 +9,7 @@
                 <h1>Create Items</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="{{ route('items.index') }}" class="btn btn-warning">Back</a>
+                <a href="{{ route('item-products.index') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
@@ -35,8 +35,8 @@
                                 <label for="name">Supplier</label>
                                 <select name="supplier" id="supplier" class="form-control">
                                     <option value="">Pilih Supplier</option>
-                                    @if ($suppliers->isNotEmpty())
-                                    @foreach ($suppliers as $supplier)
+                                    @if ($users->isNotEmpty())
+                                    @foreach ($users as $supplier)
                                     <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                     @endforeach
                                     @endif
@@ -57,7 +57,7 @@
             </div>
             <div class="pb-5 pt-3">
                 <button type="submit" class="btn" style="background: #dbb143; color: white">Create</button>
-                <a href="{{ route('items.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                <a href="{{ route('item-products.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
             </div>
         </form>
     </div>
@@ -73,7 +73,7 @@ $("#ItemForm").submit(function(event){
     var element = $("#ItemForm");
     $("button[type=submit]").prop('disabled',true);
     $.ajax({
-        url: '{{ route("items.store") }}',
+        url: '{{ route("item-products.store") }}',
         type: 'post',
         data: element.serializeArray(),
         dataType: 'json',
@@ -82,7 +82,7 @@ $("#ItemForm").submit(function(event){
 
             if (response["status"] == true) {
 
-                window.location.href="{{ route('items.index') }}";
+                window.location.href="{{ route('item-products.index') }}";
                 
                 $("#name").removeClass('is-invalid')
                     .siblings('p')
@@ -123,16 +123,6 @@ $("#ItemForm").submit(function(event){
                     .removeClass('invalid-feedback').html("");
                 }
 
-                if (errors['category']) {
-                    $("#category").addClass('is-invalid')
-                    .siblings('p')
-                    .addClass('invalid-feedback').html(errors['category']);
-                } else {
-                    $("#category").removeClass('is-invalid')
-                    .siblings('p')
-                    .removeClass('invalid-feedback').html("");
-                }
-
                 if (errors['supplier']) {
                     $("#supplier").addClass('is-invalid')
                     .siblings('p')
@@ -151,21 +141,5 @@ $("#ItemForm").submit(function(event){
     })
 });
 
-$("#name").change(function(){
-    element = $(this);
-    $("button[type=submit]").prop('disabled',true);
-    $.ajax({
-        url: '{{ route("getSlug") }}',
-        type: 'get',
-        data: {title: element.val()},
-        dataType: 'json',
-        success: function(response){
-            $("button[type=submit]").prop('disabled',false);
-            if (response["status"] == true) {
-                $("#slug").val(response["slug"]);
-            }
-        }
-    }); 
-});
 </script>
 @endsection

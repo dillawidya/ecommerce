@@ -46,7 +46,7 @@ class ProductController extends Controller
         $rules = [
             'title' => 'required',
             'price' => 'required|numeric',
-            'sku' => 'required|unique:products',
+            // 'sku' => 'required|unique:products',
             'track_qty' => 'required|in:Yes,No',
             'category' => 'required',
             'is_featured' => 'required|in:Yes,No',
@@ -160,7 +160,7 @@ class ProductController extends Controller
         $rules = [
             'title' => 'required',
             'price' => 'required|numeric',
-            'sku' => 'required|unique:products,sku,'.$product->id.',id',
+            // 'sku' => 'required|unique:products,sku,'.$product->id.',id',
             'track_qty' => 'required|in:Yes,No',
             'category' => 'required',
             'is_featured' => 'required|in:Yes,No',

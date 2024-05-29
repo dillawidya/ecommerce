@@ -47,5 +47,11 @@ class User extends Authenticatable
     public function supplierProducts() {
         return $this->hasMany(SupplierProduct::class);
     }
+
+    public function manageStocks() {
+        return $this->hasMany(SupplierProduct::class);
+    }
+
+    
     
 }
