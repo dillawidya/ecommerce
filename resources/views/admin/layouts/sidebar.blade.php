@@ -48,7 +48,7 @@
                 <li class="nav-item">
                     <a href="{{ route('coupons.index') }}" class="nav-link" style="color: #dbb143;">
                         <i class="nav-icon  fa fa-percent" aria-hidden="true"></i>
-                        <p>Discount</p>
+                        <p>Voucher</p>
                     </a>
                 </li>
                 <li class="nav-item">
