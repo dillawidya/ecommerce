@@ -49,7 +49,7 @@
                             <th>Phone</th>
                             <th>Status</th>
                             <th>Amount</th>
-                            <th>Date Ordered</th>
+                            <th width="100px">Date Ordered</th>
                         </tr>
                     </thead>
                     <tbody>

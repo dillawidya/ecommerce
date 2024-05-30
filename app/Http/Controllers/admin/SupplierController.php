@@ -15,8 +15,13 @@ class SupplierController extends Controller
                     ->with('user');
         
         if ($request->get('keyword')) {
-
-            $suppliers = $suppliers->where('nama_produk','like','%'.$request->keyword.'%');
+            $keyword = $request->get('keyword');
+            $suppliers = $suppliers->where(function($query) use ($keyword) {
+                $query->where('nama_produk', 'like', '%' . $keyword . '%')
+                        ->orWhereHas('user', function($query) use ($keyword) {
+                            $query->where('name', 'like', '%' . $keyword . '%');
+                        });
+            });
         }
 
         $suppliers = $suppliers->paginate(10);

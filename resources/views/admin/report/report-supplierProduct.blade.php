@@ -62,7 +62,7 @@
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th>Total Price</th>
+                            <th width="100px">Total Price</th>
                         </tr>
                     </thead> 
                     <tbody>

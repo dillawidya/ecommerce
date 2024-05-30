@@ -62,7 +62,7 @@
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Amount</th>
-                                <th>Action</th>
+                                <th width="100px">Action</th>
                             </tr>
                             @if ($shippingCharges->isNotEmpty())
                             @foreach ($shippingCharges as $key => $shippingCharge)

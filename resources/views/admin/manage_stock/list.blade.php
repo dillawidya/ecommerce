@@ -49,7 +49,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Action</th>
+                            <th width="100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -28,7 +28,7 @@
                             <th>Price</th>
                             <th>Qty</th>
                             <th>Total Price</th>
-                            <th>Action</th>
+                            <th width="100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>

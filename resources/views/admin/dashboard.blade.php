@@ -40,7 +40,7 @@
                     <p>Total Product</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-box-open"></i>
+                        <i class="fas fa-tag"></i>
                     </div>
                     <a href="{{ route('products.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -53,7 +53,20 @@
                     <p>Total Customers</p>
                     </div>
                     <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="fas fa-users"></i>
+                    </div>
+                    <a href="{{ route('users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-dark">
+                    <div class="inner">
+                    <h3>{{ $totalSuppliers }}</h3>
+                    <p>Total Suppliers</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fas fa-user"></i>
                     </div>
                     <a href="{{ route('users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -66,7 +79,7 @@
                     <p>Total Sale</p>
                     </div>
                     <div class="icon">
-                    <i class="fas fa-money-bill"></i>
+                    <i class="fas fa-money-bill-wave"></i>
                     </div>
                     <a href="javascript:void(0);" class="small-box-footer">&nbsp;</a>
                 </div>

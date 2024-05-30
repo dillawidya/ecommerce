@@ -46,7 +46,7 @@
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Action</th>
+                            <th width="100px">Action</th>
                         </tr>
                     </thead> 
                     <tbody>
@@ -58,24 +58,14 @@
                                     <td>{{ $supplier->nama_produk }}</td>
                                     <td>Rp. {{ number_format($supplier->harga) }}</td>
                                     <td>{{ $supplier->qty_total }}</td>
-                                    <td>
+                                    <td align="center">
                                         @if($supplier->qty_total > 0)
                                             <a href="{{ route('suppliers.edit', $supplier->id) }}">
-                                                <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                </svg>
-                                            </a>
-                                        @elseif ($supplier->qty_total === NULL)
-                                            <a href="{{ route('suppliers.edit', $supplier->id) }}">
-                                                <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                </svg>
+                                                <ion-icon name="open-outline"></ion-icon>
                                             </a>
                                         @else
                                             <button class="btn btn-secondary" disabled>
-                                                <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                </svg>
+                                                <ion-icon name="open-outline"></ion-icon>
                                             </button>
                                         @endif
                                         

@@ -49,10 +49,9 @@
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Qty</th>
-                                <th>SKU</th>
-                                <th width="100">Category</th>
-                                <th width="100">Status</th>
-                                <th width="100">Action</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th width="100px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,7 +70,6 @@
                                     <td><a href="#">{{ $product->titleName }}</a></td>
                                     <td>Rp. {{ number_format($product->price) }}</td>
                                     <td>{{ $product->qty }}</td>
-                                    <td>{{ $product->sku }}</td>
                                     <td>{{ $product->category_name }}</td>											
                                     <td>
                                         @if ($product->status == 1)

@@ -19,6 +19,7 @@ class HomeController extends Controller
         $totalOrders = Order::where('status','!=','cancelled')->count();
         $totalProducts = Product::count();
         $totalCustomers = User::where('role',1)->count();
+        $totalSuppliers = User::where('role',3)->count();
         $totalRevenue = Order::where('status','!=','cancelled')->sum('grand_total');
 
         
@@ -46,6 +47,7 @@ class HomeController extends Controller
             'totalProducts' => $totalProducts,
             'totalCustomers' => $totalCustomers,
             'totalRevenue' => $totalRevenue,
+            'totalSuppliers' => $totalSuppliers
            
         ]);
     }

@@ -116,6 +116,56 @@ class SupplierProductController extends Controller
         }
     }
 
+    public function manage($id, Request $request) {
+        $supplierProduct = SupplierProduct::find($id);
+
+        if (empty($supplierProduct)) {
+            $request->session()->flash('error', 'Data Tidak Ditemukan');
+            return redirect()->route('supplier-products.index');
+        }
+
+        $data['supplierProduct'] = $supplierProduct;
+        return view('supplier.manage',$data);
+    }
+
+    public function updateManage($id, Request $request) {
+
+        $supplierProduct = SupplierProduct::find($id);
+
+        if (empty($supplierProduct)) {
+            $request->session()->flash('error', 'Data Tidak Ditemukan');
+            return response()->json([
+                'status' => false,
+                'notFound' => true
+            ]);
+        }
+
+        $validator = Validator::make($request->all(),[
+            'manage_stok' => 'required',
+        ]);
+
+        
+
+        if ($validator->passes()) {
+                
+            $supplierProduct->qty_total = $request->manage_stok;
+            $supplierProduct->save();
+
+            $request->session()->flash('success','Produk Berhasil DiUpdate.');
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Produk Berhasil Diupdate.'
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+    }
+
     // public function destroy($id, Request $request) {
     //     $supplierProduct = SupplierProduct::find($id);
 

@@ -88,7 +88,7 @@
                         <thead>
                             <tr style="background: #dbb143; color: white">
                                 <th>Purchases Date</th>
-                                <th>Total Purchases</th>
+                                <th width="100px">Total Purchases</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,7 +111,7 @@
                         <thead>
                             <tr style="background: #dbb143; color: white">
                                 <th>Sale Date</th>
-                                <th>Total Sale</th>
+                                <th width="100px">Total Sale</th>
                             </tr>
                         </thead>
                         <tbody>

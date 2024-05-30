@@ -121,6 +121,8 @@ Route::group(['prefix' => 'supplier'], function(){
         Route::post('/supplier-products', [SupplierProductController::class, 'store'])->name('supplier-products.store');
         Route::get('/supplier-products/{item}/edit',[SupplierProductController::class, 'edit'])->name('supplier-products.edit');
         Route::put('/supplier-products/{item}',[SupplierProductController::class, 'update'])->name('supplier-products.update');
+        Route::get('/product-manage/{item}/edit',[SupplierProductController::class, 'manage'])->name('product-manage.edit');
+        Route::put('/product-manage/{item}',[SupplierProductController::class, 'updateManage'])->name('product-manage.update');
         // Route::delete('/supplier-products/{item}',[SupplierProductController::class, 'destroy'])->name('supplier-products.delete');
 
 

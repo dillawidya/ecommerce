@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="container-fluid">
         @include('admin.message')
-        <form action="" id="supplierProductForm" name="supplierProductForm" method="post">
+        <form action="" id="manageProductForm" name="manageProductForm" method="post">
             <div class="card">
                 <div class="card-body">								
                     <div class="row">
@@ -75,7 +75,7 @@
                         <th>Nama Produk</th>
                         <th>Harga</th>
                         <th>Total Stok(KG)</th>
-                        <th>Aksi</th>
+                        <th width="100px">Aksi</th>
                     </tr>
                     @foreach ($supplierProducts as $item)
                         <tr style="background-color: {{ $item->qty_total == 0 ? '#ffcccc' : 'transparent' }};">
@@ -83,16 +83,16 @@
                             <td>Rp. {{ number_format($item->harga)  }}</td>
                             <td>{{ $item->qty_total }}</td>
                             <td>
+                                
                                 <a href="{{ route('supplier-products.edit', $item->id) }}">
                                     <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                                     </svg>
                                 </a>
-                                {{-- <a href="#" onclick="deleteProduct({{ $item->id }})" class="text-danger w-4 h-4 mr-1">
-                                    <svg wire:loading.remove.delay="" wire:target="" class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path	ath fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a> --}}
+                                <a href="{{ route('product-manage.edit', $item->id) }}">
+                                    <ion-icon name="open-outline" style="color: red"></ion-icon>
+                                </a>
+                            </div>
                             </td>
                         </tr>
                     @endforeach
@@ -106,7 +106,7 @@
 
 @section('customJs')
 <script>
-$("#supplierProductForm").submit(function(event){
+$("#manageProductForm").submit(function(event){
     event.preventDefault();
     var element = $(this);
     $("button[type=submit]").prop('disabled',true);
