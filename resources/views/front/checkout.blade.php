@@ -76,7 +76,7 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <input type="text" name="state" id="state" class="form-control" placeholder="State" value="{{ (!empty($customerAddress)) ? $customerAddress->state : '' }}">
+                                        <input type="text" name="state" id="state" class="form-control" placeholder="Province" value="{{ (!empty($customerAddress)) ? $customerAddress->state : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
@@ -161,10 +161,10 @@
                             <label for="payment_method_one" class="form-check-label">COD</label>
                         </div>
                         
-                        <div class="">
+                        {{-- <div class="">
                             <input type="radio" name="payment_method" value="cod" id="payment_method_two">
                             <label for="payment_method_two" class="form-check-label">Stripe</label>
-                        </div>
+                        </div> --}}
                         
                         <div class="card-body p-0 d-none mt-3" id="card-payment-form">
                             <div class="mb-3">
@@ -184,7 +184,7 @@
                         </div>
                         <div class="pt-4">
                             {{-- <a href="#" class="btn-dark btn btn-block w-100">Pay Now</a> --}}
-                            <button type="submit" class="btn-dark btn btn-block w-100">Pay Now</button>
+                            <button type="submit" class="btn-dark btn btn-block w-100">Order Now</button>
                         </div>                        
                     </div>
 

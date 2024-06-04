@@ -105,8 +105,8 @@
                                     <p></p>
                                 </div>
                                 <div class="col-md-6 mb-3">                                    
-                                    <label for="phone">State</label>
-                                    <input value="{{ (!empty($address)) ? $address->state : '' }}" type="text" name="state" id="state" placeholder="Enter Your State " class="form-control">
+                                    <label for="phone">Povince</label>
+                                    <input value="{{ (!empty($address)) ? $address->state : '' }}" type="text" name="state" id="state" placeholder="Enter Your Province " class="form-control">
                                     <p></p>
                                 </div>
                                 <div class="col-md-6 mb-3">                                    
