@@ -187,7 +187,7 @@ class CartController extends Controller
                 $totalQty += $item->qty;
             }
 
-            $totalShippingCharge = $totalQty*$shippingInfo->amount;
+            $totalShippingCharge = $shippingInfo->amount;
             $grandTotal = ($subTotal-$discount)+$totalShippingCharge;            
         
         } else {
@@ -281,12 +281,12 @@ class CartController extends Controller
             }
 
             if ($shippingInfo != null) {
-                $shipping = $totalQty*$shippingInfo->amount;
+                $shipping = $shippingInfo->amount;
                 $grandTotal = ($subTotal-$discount)+$shipping;
 
             } else {
                 $shippingInfo = ShippingCharge::where('city_id','rest_of_city')->first();
-                $shipping = $totalQty*$shippingInfo->amount;
+                $shipping = $shippingInfo->amount;
                 $grandTotal = ($subTotal-$discount)+$shipping;
 
             }
@@ -401,7 +401,7 @@ class CartController extends Controller
 
             if ($shippingInfo != null) {
 
-                $shippingCharge = $totalQty*$shippingInfo->amount;
+                $shippingCharge = $shippingInfo->amount;
                 $grandTotal = ($subTotal-$discount)+$shippingCharge;
 
                 return response()->json([
@@ -414,7 +414,7 @@ class CartController extends Controller
             } else {
                 $shippingInfo = ShippingCharge::where('city_id','rest_of_city')->first();
 
-                $shippingCharge = $totalQty*$shippingInfo->amount;
+                $shippingCharge = $shippingInfo->amount;
                 $grandTotal = ($subTotal-$discount)+$shippingCharge;
 
                 return response()->json([

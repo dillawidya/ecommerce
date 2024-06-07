@@ -25,7 +25,31 @@
                     <div class="card-header">
                         <h2 class="h5 mb-0 pt-2 pb-2">My Coupons</h2>
                     </div>
-                    <div class="card-body p-4">
+                    <div class="container mt-3">
+                        <div class="voucher-list">
+                            @foreach ($coupons as $coupon)
+                            <div class="voucher-card">
+                                <img src="{{ asset('front-assets/images/coupon.jpg') }}" alt="Voucher Image">
+                                <div class="voucher-details">
+                                    <h3>{{ $coupon->description }}</h3>
+                                    <p>Discount: @if ($coupon->type == 'percent')
+                                                    {{ $coupon->discount_amount }}%
+                                                @else
+                                                    Rp. {{ number_format($coupon->discount_amount) }}
+                                                @endif
+                                    </p>
+                                    <p>Min. Rp.{{ number_format($coupon->min_amount) }} </p>
+                                    <p class="voucher-code">{{ $coupon->code }}</p>
+                                    <div class="voucher-footer">
+                                        Expired at: 
+                                        {{ \Carbon\Carbon::parse($coupon->expires_at)->format('d M, Y')  }}
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- <div class="card-body p-4">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead> 
@@ -60,7 +84,7 @@
                                 </tbody>
                             </table>
                         </div> 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
