@@ -45,9 +45,48 @@ class TransaksiController extends Controller
         return redirect()->route('transaksi.index');
     }   
 
+    public function update(Request $request, $id){
+        $transaksi = Transaksi::findOrFail($id);
+
+        // Validasi input
+        $request->validate([
+            'qty' => 'required|integer|min:1'
+        ]);
+
+        // Perbarui qty
+        $transaksi->qty = $request->qty;
+
+        // Recalculate total price
+        $transaksi->grand_total = $transaksi->total_harga * $transaksi->qty;
+        $transaksi->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Quantity updated successfully'
+        ]);
+    }
+
+
     public function destroy($id) {
         $transaksi = Transaksi::findOrFail($id);
+
+        if ($transaksi == null) {
+            session()->flash('error','Purchases Not Found');
+            return response()->json([
+                'status' => true,
+            ]);
+        }
+
         $transaksi->delete();
-        return redirect()->back();
+
+        $message = 'Purcahes Deleted Successfully';
+
+        session()->flash('success',$message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message
+        ]);
     }
 }
+  

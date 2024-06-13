@@ -194,6 +194,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/transaksi',[TransaksiController::class, 'index'])->name('transaksi.index');
         Route::get('/transaksi/create',[TransaksiController::class, 'create'])->name('transaksi.create');
         Route::post('/transaksi/store',[TransaksiController::class, 'store'])->name('transaksi.store');
+        Route::post('/transaksi/{id}',[TransaksiController::class, 'update'])->name('transaksi.update');
         Route::delete('/transaksi/destroy{id}',[TransaksiController::class, 'destroy'])->name('transaksi.destroy');
 
         
